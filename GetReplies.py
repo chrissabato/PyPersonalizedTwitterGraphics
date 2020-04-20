@@ -5,6 +5,9 @@ def GetReplies():
     from PrintTools import PrintBox
 
     #get list of tweets that have been replied to or marked to ignore
+    if not path.exists("replied.txt"):
+        with open("replied.txt", 'w') as f: 
+            pass
     with open('replied.txt', 'r') as f:
         replied = f.read().splitlines()
 
