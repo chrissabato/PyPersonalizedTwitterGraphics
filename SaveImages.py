@@ -25,10 +25,10 @@ def SaveImages(filename='newfiles.txt'):
         draw = ImageDraw.Draw(img)
 
         # Add Name
-        FONT = ImageFont.truetype(config["FontName"],config["FontSize"])
+        FONT = ImageFont.truetype(config["FontName"],int(config["FontSize"]))
         w, h = draw.textsize(NAME.upper(),FONT)
         xpos = (750-w)/2
-        draw.text(xy=(xpos,config["TextVPosition"]),text=NAME.upper(),fill=config["FontColor"],font=FONT )
+        draw.text(xy=(xpos,int(config["TextVPosition"])),text=NAME.upper(),fill=config["FontColor"],font=FONT )
 
         # Add Number
         numberImg = Image.open("Numbers/" + NUMBER + ".png")

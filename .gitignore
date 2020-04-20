@@ -1,9 +1,10 @@
 __pycache__/
+Files/
 *.py[cod]
 *$py.class
 desktop.ini
-.DS_Store
 Thumbs.db
 config.json
 newfiles.txt
 replied.txt
+.DS_Store
