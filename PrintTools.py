@@ -17,7 +17,9 @@ def menu():
     print("║ 2 — Generate images                    ║")
     print("║ 3 — Send images                        ║")
     print("║ 4 — Edit Setting                       ║")
-    print("║ 5 — Exit                               ║")
+    print("║ 5 — View rendered images               ║")
+    print("║ 6 — Mark rendered image complete       ║")
+    print("║ 0 — Exit                               ║")
     print("╚════════════════════════════════════════╝")
 
     userinput = input()

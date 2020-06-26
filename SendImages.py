@@ -1,7 +1,7 @@
-def SendImages():
+import tweepy, json, glob, os, os.path
+from PrintTools import PrintBox
 
-    import tweepy, json, glob, os, os.path
-    from PrintTools import PrintBox
+def SendImages():
 
     # get credentials at developer.twitter.com
     with open('config.json', "r") as f:
@@ -37,5 +37,34 @@ def SendImages():
     tmp = str(count).rjust(3,"0") + " files sent"
     PrintBox(tmp)
 
-if __name__ == "__main__":
-    SendImages()
+
+def ViewRenderedImages():
+    dirList = os.listdir('Files/JPEG/')
+    print("╔═══════════════════════════════════════════╗")
+    for index, file in enumerate(dirList):
+        tweet = file.replace(".jpg","").replace(".png","").split('-')
+        print("║ "+str(index).rjust(2) + " — @" +tweet[0].ljust(15) +" "+tweet[1] + " ║")
+    print("╚═══════════════════════════════════════════╝")
+    return dirList
+
+def ArchiveRenderedImage():
+    dirList = ViewRenderedImages()
+    userinput = input()
+    
+    if userinput == "":
+        return True
+    else:
+        filename=dirList[int(userinput)]
+        PrintBox("Archiving: "+filename)
+        fileloc  = "Files/JPEG/"+filename
+        os.unlink(fileloc)
+        
+        # Add tweet id to sent list
+        tweet = filename.replace(".jpg","").replace(".png","").split('-')
+        with open('replied.txt', 'a',) as f:
+            f.write(tweet[1]+"\n")
+
+
+        ViewRenderedImages()
+
+

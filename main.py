@@ -1,5 +1,5 @@
 from SaveImages import SaveImages
-from SendImages import SendImages
+from SendImages import *
 from GetReplies import GetReplies
 from Settings import Settings
 from PrintTools import *
@@ -20,16 +20,16 @@ def checkConfig():
 if not path.exists("config.json"):
     shutil.copyfile("config-default.json", "config.json")
     PrintBox("New config created, please edit config.json")
-    userinput = "5"
+    userinput = "0"
 elif not checkConfig():
         PrintBox("Empty field detected, please edit config.json")
-        userinput = "5"
+        userinput = "0"
 else:
     # diaplay intial menu
     userinput = menu()
 
 
-while userinput != "5":
+while userinput != "0":
     # Option 1 - Read tweet replies
     # ═══════════════════════════════════════════ 
     if userinput == "1":
@@ -52,6 +52,18 @@ while userinput != "5":
     # ═══════════════════════════════════════════ 
     elif userinput == "4":
         Settings()
+        userinput = menu()
+
+    # Option 5 - Mark rendered image complete
+    # ═══════════════════════════════════════════ 
+    elif userinput == "5":
+        ViewRenderedImages()
+        userinput = menu()
+    
+    # Option 6 - Mark rendered image complete
+    # ═══════════════════════════════════════════ 
+    elif userinput == "6":
+        ArchiveRenderedImage()
         userinput = menu()
     
     # All other options - Repeat menu
